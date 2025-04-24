@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENAPI Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="chat-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>MENAPI</h1>
+            </div>
+            <button class="new-chat-button" id="new-chat-button">
+                <i class="fas fa-plus"></i> Новый диалог
+            </button>
+            <ul class="chat-list" id="chat-list">
+                <!-- Элементы чата будут добавлены сюда -->
+            </ul>
+            <button class="clear-chats-button" id="clear-chats-button">
+                <i class="fas fa-trash-alt"></i> Очистить диалоги
+            </button>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-links">
+                    <!-- Ссылки на соцсети и т.д. -->
+                </div>
+                <div class="sidebar-stats">
+                    <p>Всего запросов: <span id="total-requests">0</span></p>
+                    <p>За сегодня: <span id="today-requests">0</span></p>
+                </div>
+                <div class="sidebar-version">
+                    MENAPI Beta&lt;2.0&gt;
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-chat">
+            <div class="chat-info-header">
+                <p>Привет! Я могу ответить на твои вопросы и помочь с различными задачами. Чтобы узнать подробнее, подпишись на <a href="https://t.me/GEPETEBOTIK" target="_blank">Telegram канал</a> и <a href="https://t.me/MenapiCHat" target="_blank">чат</a>
+                    MENAPI.</p>
+                <p>Для того чтобы активировать взлом выберите модель ВЗЛОМ и напишите /jailbreak</p>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+                <!-- Сообщения чата будут добавлены сюда -->
+            </div>
+
+            <div class="chat-input-area">
+                <div class="input-icons">
+                </div>
+                <textarea id="message-input" class="chat-input" placeholder="Задать вопрос..." autocomplete="off"></textarea>
+                <button id="send-button" class="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+
+            <div class="chat-bottom-panel">
+                <div class="model-select">
+                    Модель: <span class="selected-option">gemini-2.0-flash</span> <i class="fas fa-chevron-down"></i>
+                    <!-- Тут можно добавить выпадающий список для моделей, если потребуется -->
+                </div>
+                <div class="role-select" id="role-select">
+                    Роль1: <span class="selected-option" id="selected-role-name">Стандарт</span> <i class="fas fa-chevron-down"></i>
+                    <div class="role-select-dropdown" id="role-select-dropdown">
+                        <!-- Список ролей будет заполнен JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
