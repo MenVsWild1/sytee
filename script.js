@@ -1,1 +1,702 @@
-const _0x236e86=_0x14cd;(function(_0x469e8f,_0x2d44f2){const _0x19e28e=_0x14cd,_0x3d5714=_0x469e8f();while(!![]){try{const _0x113ad8=parseInt(_0x19e28e(0xc6))/0x1*(-parseInt(_0x19e28e(0x78))/0x2)+-parseInt(_0x19e28e(0x76))/0x3+-parseInt(_0x19e28e(0xc2))/0x4+parseInt(_0x19e28e(0xba))/0x5+-parseInt(_0x19e28e(0xc5))/0x6*(-parseInt(_0x19e28e(0x69))/0x7)+-parseInt(_0x19e28e(0x74))/0x8*(parseInt(_0x19e28e(0xe5))/0x9)+-parseInt(_0x19e28e(0xe9))/0xa*(-parseInt(_0x19e28e(0x106))/0xb);if(_0x113ad8===_0x2d44f2)break;else _0x3d5714['push'](_0x3d5714['shift']());}catch(_0x169468){_0x3d5714['push'](_0x3d5714['shift']());}}}(_0x5cf1,0x60cd7));const messageInput=document[_0x236e86(0x6f)](_0x236e86(0x77)),sendButton=document['getElementById'](_0x236e86(0x8c)),chatMessagesContainer=document[_0x236e86(0x6f)](_0x236e86(0xdd)),newChatButton=document[_0x236e86(0x6f)]('new-chat-button'),chatList=document[_0x236e86(0x6f)](_0x236e86(0xc1)),clearChatsButton=document['getElementById']('clear-chats-button'),totalRequestsSpan=document[_0x236e86(0x6f)]('total-requests'),todayRequestsSpan=document['getElementById']('today-requests'),roleSelect=document[_0x236e86(0x6f)](_0x236e86(0xc8)),roleSelectDropdown=document[_0x236e86(0x6f)](_0x236e86(0xa4)),selectedRoleNameSpan=document[_0x236e86(0x6f)]('selected-role-name'),burgerButton=document['getElementById'](_0x236e86(0xfc)),mobileBurgerButton=document[_0x236e86(0x6f)](_0x236e86(0xa1)),sidebar=document[_0x236e86(0xe0)](_0x236e86(0x12b)),overlay=document[_0x236e86(0x12e)]('div');overlay['classList'][_0x236e86(0xa0)](_0x236e86(0x11b)),document[_0x236e86(0xa2)]['appendChild'](overlay);function _0x14cd(_0x561d28,_0xff67ea){const _0x5cf148=_0x5cf1();return _0x14cd=function(_0x14cd56,_0x338b46){_0x14cd56=_0x14cd56-0x67;let _0x6d517a=_0x5cf148[_0x14cd56];return _0x6d517a;},_0x14cd(_0x561d28,_0xff67ea);}const modelSelect=document[_0x236e86(0x6f)](_0x236e86(0x85)),modelSelectDropdown=document[_0x236e86(0x6f)]('model-select-dropdown'),selectedModelNameSpan=document['getElementById'](_0x236e86(0x92)),GOOGLE_API_KEY=_0x236e86(0x95),OPENROUTER_API_KEY='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',MODELS=[{'id':_0x236e86(0x109),'name':_0x236e86(0x108),'apiKey':GOOGLE_API_KEY,'apiType':_0x236e86(0xab),'supportsStreaming':![],'endpoint':_0x236e86(0x8b)+GOOGLE_API_KEY,'requestFormatter':(_0x24f0d5,_0xd6433b)=>{const _0x46c6ab=_0x236e86,_0x3ff1a2=_0x24f0d5[_0x46c6ab(0xae)](_0x47bd19=>({'role':_0x47bd19[_0x46c6ab(0x7d)]===_0x46c6ab(0xe2)?_0x46c6ab(0xe2):'model','parts':[{'text':_0x47bd19[_0x46c6ab(0x68)]}]})),_0x4d3d6b={'contents':_0x3ff1a2};return _0xd6433b&&(_0x4d3d6b[_0x46c6ab(0xb2)]={'parts':[{'text':_0xd6433b}]}),_0x4d3d6b;}},{'id':_0x236e86(0x115),'name':_0x236e86(0xc9),'apiKey':OPENROUTER_API_KEY,'apiType':_0x236e86(0xd6),'supportsStreaming':!![],'endpoint':_0x236e86(0xf0),'requestFormatter':(_0x34036f,_0x553a5f)=>{const _0xf145af=_0x236e86,_0x304523=[];return _0x553a5f&&_0x304523[_0xf145af(0x82)]({'role':_0xf145af(0x12c),'content':_0x553a5f}),_0x34036f[_0xf145af(0x8e)](_0x5ab24e=>{const _0x12c189=_0xf145af;_0x304523[_0x12c189(0x82)]({'role':_0x5ab24e[_0x12c189(0x7d)]===_0x12c189(0xe2)?_0x12c189(0xe2):_0x12c189(0x101),'content':_0x5ab24e['text']});}),{'model':'deepseek/deepseek-r1','messages':_0x304523,'stream':!![]};}}],ROLES=[{'id':_0x236e86(0x10f),'name':_0x236e86(0x118),'prompt':''},{'id':_0x236e86(0x132),'name':_0x236e86(0xdc),'prompt':_0x236e86(0xcf)},{'id':_0x236e86(0xce),'name':_0x236e86(0xd0),'prompt':_0x236e86(0x105)},{'id':'translator','name':_0x236e86(0xe3),'prompt':'Ты\x20-\x20профессиональный\x20переводчик,\x20владеющий\x20множеством\x20языков\x20и\x20обладающий\x20глубоким\x20пониманием\x20культурных\x20нюансов.\x20Твоя\x20задача\x20-\x20обеспечивать\x20точный\x20и\x20стилистически\x20грамотный\x20перевод\x20предоставленного\x20текста\x20с\x20одного\x20языка\x20на\x20другой.\x20Учитывай\x20контекст\x20и\x20целевую\x20аудиторию,\x20чтобы\x20сохранить\x20смысл\x20и\x20эмоциональную\x20окраску\x20оригинала.\x20При\x20необходимости\x20предлагай\x20несколько\x20вариантов\x20перевода.\x20ПИШИ\x20ВСЕГДА\x20ПО\x20РУССКИ'}];let dialogues=[],currentDialogueId=null,totalRequests=0x0,todayRequests=0x0,lastRequestDate=null,currentRoleId=ROLES[0x0]['id'],currentModelId=MODELS[0x0]['id'];function generateUUID(){const _0xdbd0ca=_0x236e86;return _0xdbd0ca(0xb9)[_0xdbd0ca(0x129)](/[xy]/g,function(_0xf2d006){const _0x1511fa=_0xdbd0ca;var _0x5dcb0e=Math[_0x1511fa(0xda)]()*0x10|0x0,_0x5b0f25=_0xf2d006=='x'?_0x5dcb0e:_0x5dcb0e&0x3|0x8;return _0x5b0f25[_0x1511fa(0xf4)](0x10);});}function saveState(){const _0x120347=_0x236e86;localStorage[_0x120347(0xf5)]('menapiState',JSON[_0x120347(0x7a)]({'dialogues':dialogues,'currentDialogueId':currentDialogueId,'totalRequests':totalRequests,'todayRequests':todayRequests,'lastRequestDate':lastRequestDate,'currentRoleId':currentRoleId,'currentModelId':currentModelId}));}function loadState(){const _0x6014c1=_0x236e86,_0x51e36c=localStorage[_0x6014c1(0xf1)](_0x6014c1(0xd7));if(_0x51e36c){const _0x2ade7e=JSON['parse'](_0x51e36c);dialogues=_0x2ade7e[_0x6014c1(0xc7)]||[],totalRequests=_0x2ade7e[_0x6014c1(0x8f)]||0x0,todayRequests=_0x2ade7e[_0x6014c1(0xd4)]||0x0,lastRequestDate=_0x2ade7e[_0x6014c1(0x121)]||null,currentRoleId=_0x2ade7e[_0x6014c1(0x119)]||ROLES[0x0]['id'];const _0x54551a=_0x2ade7e[_0x6014c1(0xe4)],_0x503201=MODELS['find'](_0x51b56b=>_0x51b56b['id']===_0x54551a);currentModelId=_0x503201?_0x503201['id']:MODELS[0x0]['id'];const _0x1f3c49=new Date()[_0x6014c1(0x114)]()['split']('T')[0x0];lastRequestDate!==_0x1f3c49&&(todayRequests=0x0,lastRequestDate=_0x1f3c49);const _0x32c9df=dialogues[_0x6014c1(0xd3)](_0x86fd9f=>_0x86fd9f['id']===_0x2ade7e['currentDialogueId']);dialogues[_0x6014c1(0xe6)]===0x0||!_0x32c9df?createNewChat(!![]):currentDialogueId=_0x2ade7e[_0x6014c1(0x128)];}else createNewChat(!![]);if(!currentDialogueId||!dialogues['find'](_0x5c6223=>_0x5c6223['id']===currentDialogueId)){if(dialogues[_0x6014c1(0xe6)]>0x0)currentDialogueId=dialogues[0x0]['id'];else{createNewChat(!![]);return;}}saveState();}function escapeHTML(_0x2130d6){const _0x403897=_0x236e86;return _0x2130d6[_0x403897(0x129)](/&/g,_0x403897(0x124))['replace'](/</g,_0x403897(0x99))[_0x403897(0x129)](/>/g,_0x403897(0xd2))[_0x403897(0x129)](/"/g,_0x403897(0x11d))[_0x403897(0x129)](/'/g,_0x403897(0xc3));}function formatMessageContent(_0x4180fe){const _0xfb33f3=_0x236e86,_0xc99bf=/```(\w*)\n([\s\S]*?)```/g,_0x11046e=/\*\*(.*?)\*\*/g;let _0x3a258d='',_0x55cce3=0x0;_0x4180fe[_0xfb33f3(0x129)](_0xc99bf,(_0x5e7988,_0x4f4176,_0x5450d8,_0x30c93a)=>{const _0x569792=_0xfb33f3;let _0x35f7a4=_0x4180fe[_0x569792(0x12d)](_0x55cce3,_0x30c93a);_0x35f7a4=escapeHTML(_0x35f7a4),_0x35f7a4=_0x35f7a4[_0x569792(0x129)](_0x11046e,'<span\x20class=\x22bold-text\x22>$1</span>'),_0x35f7a4=_0x35f7a4[_0x569792(0x129)](/\n/g,'<br>'),_0x3a258d+=_0x35f7a4;const _0x5c6b05=_0x4f4176||_0x569792(0xc4),_0x5bb592=_0x5450d8[_0x569792(0x104)]();return _0x3a258d+=_0x569792(0x127)+escapeHTML(_0x5c6b05)+_0x569792(0xbc)+escapeHTML(_0x5bb592)+'</code></pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20',_0x55cce3=_0x30c93a+_0x5e7988[_0x569792(0xe6)],_0x5e7988;});let _0x16eac5=_0x4180fe['substring'](_0x55cce3);return _0x16eac5=escapeHTML(_0x16eac5),_0x16eac5=_0x16eac5['replace'](_0x11046e,_0xfb33f3(0xac)),_0x16eac5=_0x16eac5[_0xfb33f3(0x129)](/\n/g,'<br>'),_0x3a258d+=_0x16eac5,_0x3a258d;}function addMessageToChat(_0x26fa23,_0x35d368,_0x319ce5=![]){const _0x196be1=_0x236e86,_0x5968e0=document[_0x196be1(0x12e)](_0x196be1(0xa6));_0x5968e0[_0x196be1(0x10c)]['add']('message'),_0x5968e0[_0x196be1(0x10c)][_0x196be1(0xa0)](_0x35d368===_0x196be1(0xe2)?_0x196be1(0x10b):_0x196be1(0xbe));_0x319ce5&&_0x5968e0[_0x196be1(0x10c)][_0x196be1(0xa0)](_0x196be1(0x6b));const _0x394822=document['createElement']('div');_0x394822[_0x196be1(0x10c)]['add'](_0x196be1(0xe7)),_0x394822[_0x196be1(0xb3)]=_0x35d368===_0x196be1(0xe2)?'Вы':'AI';const _0x1a2662=document['createElement']('div');_0x1a2662[_0x196be1(0x10c)][_0x196be1(0xa0)](_0x196be1(0x102));_0x319ce5?_0x1a2662['innerHTML']=_0x26fa23:_0x35d368==='ai'?_0x1a2662[_0x196be1(0x120)]=formatMessageContent(_0x26fa23):(_0x1a2662['textContent']=_0x26fa23,_0x1a2662[_0x196be1(0x120)]=_0x1a2662['innerHTML']['replace'](/\n/g,_0x196be1(0x6e)));_0x5968e0['appendChild'](_0x394822),_0x5968e0[_0x196be1(0x10e)](_0x1a2662),chatMessagesContainer['appendChild'](_0x5968e0),chatMessagesContainer[_0x196be1(0x8d)]=chatMessagesContainer[_0x196be1(0x7f)];if(_0x319ce5)return _0x5968e0;}function updateMessageInChatElement(_0x58043a,_0x44b7f1){const _0x46ef14=_0x236e86;if(_0x58043a&&_0x58043a['classList'][_0x46ef14(0x6d)](_0x46ef14(0x6b))){_0x58043a[_0x46ef14(0x10c)][_0x46ef14(0x11c)](_0x46ef14(0x6b));const _0x254a35=_0x58043a['querySelector']('.message-content');_0x254a35&&(_0x254a35[_0x46ef14(0x120)]=formatMessageContent(_0x44b7f1)),chatMessagesContainer[_0x46ef14(0x8d)]=chatMessagesContainer[_0x46ef14(0x7f)];}}function removeMessageFromChatElement(_0x2c0adb){const _0x5d414a=_0x236e86;_0x2c0adb&&_0x2c0adb[_0x5d414a(0xa7)]&&_0x2c0adb[_0x5d414a(0xa7)]['removeChild'](_0x2c0adb);}function renderMessages(_0x4dd459){const _0x370f8a=_0x236e86;chatMessagesContainer[_0x370f8a(0x120)]='';const _0xa320c5=dialogues[_0x370f8a(0xd3)](_0x171327=>_0x171327['id']===_0x4dd459);if(!_0xa320c5){addMessageToChat(_0x370f8a(0xaf),'ai');return;}_0xa320c5['messages'][_0x370f8a(0xe6)]===0x0?addMessageToChat(_0x370f8a(0x10d),'ai'):_0xa320c5['messages']['forEach'](_0x36ed84=>{const _0x2f58b0=_0x370f8a;addMessageToChat(_0x36ed84[_0x2f58b0(0x68)],_0x36ed84[_0x2f58b0(0x7d)]);});}function renderChatList(){const _0x534c2a=_0x236e86;chatList[_0x534c2a(0x120)]='';if(dialogues['length']===0x0){const _0x325181=document['createElement']('li');_0x325181[_0x534c2a(0x10c)][_0x534c2a(0xa0)](_0x534c2a(0xb7),_0x534c2a(0x107)),_0x325181[_0x534c2a(0xb3)]=_0x534c2a(0x113),chatList[_0x534c2a(0x10e)](_0x325181);return;}dialogues[_0x534c2a(0x8e)](_0x1aa59c=>{const _0x37109e=_0x534c2a,_0x2d032a=document[_0x37109e(0x12e)]('li');_0x2d032a[_0x37109e(0x10c)][_0x37109e(0xa0)](_0x37109e(0xb7));_0x1aa59c['id']===currentDialogueId&&_0x2d032a[_0x37109e(0x10c)]['add']('active');_0x2d032a[_0x37109e(0xeb)]['dialogueId']=_0x1aa59c['id'];const _0x310263=document[_0x37109e(0x12e)](_0x37109e(0xd8));_0x310263[_0x37109e(0x10c)][_0x37109e(0xa0)](_0x37109e(0xf3));const _0x27ed96=_0x1aa59c['messages'][_0x37109e(0xd3)](_0x5e3f91=>_0x5e3f91[_0x37109e(0x7d)]===_0x37109e(0xe2));_0x310263[_0x37109e(0xb3)]=_0x1aa59c['title']||(_0x27ed96?_0x27ed96[_0x37109e(0x68)][_0x37109e(0x12d)](0x0,0x1e)+(_0x27ed96[_0x37109e(0x68)][_0x37109e(0xe6)]>0x1e?_0x37109e(0x67):''):_0x37109e(0x98));const _0x57bc2d=document[_0x37109e(0x12e)](_0x37109e(0xa6));_0x57bc2d[_0x37109e(0x10c)][_0x37109e(0xa0)](_0x37109e(0x134));const _0x586b33=document[_0x37109e(0x12e)]('i');_0x586b33[_0x37109e(0x10c)][_0x37109e(0xa0)](_0x37109e(0x81),_0x37109e(0x12f)),_0x586b33[_0x37109e(0x93)]=_0x37109e(0x10a),_0x586b33['dataset'][_0x37109e(0xaa)]='delete',_0x57bc2d[_0x37109e(0x10e)](_0x586b33),_0x2d032a[_0x37109e(0x10e)](_0x310263),_0x2d032a[_0x37109e(0x10e)](_0x57bc2d),chatList['appendChild'](_0x2d032a);});}function renderRolesDropdown(){const _0x78189e=_0x236e86;roleSelectDropdown[_0x78189e(0x120)]='',ROLES[_0x78189e(0x8e)](_0x4735=>{const _0x4d7b17=_0x78189e,_0x163fd0=document['createElement'](_0x4d7b17(0xa6));_0x163fd0[_0x4d7b17(0x10c)]['add'](_0x4d7b17(0xb4)),_0x4735['id']===currentRoleId&&_0x163fd0['classList'][_0x4d7b17(0xa0)](_0x4d7b17(0x72)),_0x163fd0['dataset'][_0x4d7b17(0x112)]=_0x4735['id'],_0x163fd0[_0x4d7b17(0xb3)]=_0x4735[_0x4d7b17(0x9e)],roleSelectDropdown[_0x4d7b17(0x10e)](_0x163fd0);}),updateSelectedRoleName();}function updateSelectedRoleName(){const _0x2d9aa6=_0x236e86,_0x589a1f=ROLES[_0x2d9aa6(0xd3)](_0xd627c5=>_0xd627c5['id']===currentRoleId);selectedRoleNameSpan[_0x2d9aa6(0xb3)]=_0x589a1f?_0x589a1f[_0x2d9aa6(0x9e)]:_0x2d9aa6(0x86);}function switchRole(_0x21f3b8){if(currentRoleId===_0x21f3b8)return;currentRoleId=_0x21f3b8,saveState(),renderRolesDropdown();}function renderModelsDropdown(){const _0x4428ef=_0x236e86;modelSelectDropdown[_0x4428ef(0x120)]='',MODELS[_0x4428ef(0x8e)](_0x17f15b=>{const _0x2caa31=_0x4428ef,_0x326c4a=document[_0x2caa31(0x12e)]('div');_0x326c4a[_0x2caa31(0x10c)][_0x2caa31(0xa0)](_0x2caa31(0xb4)),_0x17f15b['id']===currentModelId&&_0x326c4a[_0x2caa31(0x10c)]['add'](_0x2caa31(0x72)),_0x326c4a[_0x2caa31(0xeb)][_0x2caa31(0x88)]=_0x17f15b['id'],_0x326c4a['textContent']=_0x17f15b[_0x2caa31(0x9e)],modelSelectDropdown['appendChild'](_0x326c4a);}),updateSelectedModelName();}function updateSelectedModelName(){const _0x3cca0b=_0x236e86,_0x446927=MODELS[_0x3cca0b(0xd3)](_0x23b2a1=>_0x23b2a1['id']===currentModelId);selectedModelNameSpan[_0x3cca0b(0xb3)]=_0x446927?_0x446927['name']:_0x3cca0b(0x131);}function switchModel(_0x425dac){if(currentModelId===_0x425dac)return;currentModelId=_0x425dac,saveState(),renderModelsDropdown();}function updateCountersUI(){const _0x5bcb9b=_0x236e86;totalRequestsSpan['textContent']=totalRequests,todayRequestsSpan[_0x5bcb9b(0xb3)]=todayRequests;}function createNewChat(_0x159b2b=!![]){const _0x4186ae=_0x236e86,_0x1215cb=generateUUID(),_0x443856={'id':_0x1215cb,'title':'','messages':[]};dialogues[_0x4186ae(0x87)](_0x443856),_0x159b2b&&(currentDialogueId=_0x1215cb,saveState(),renderChatList(),renderMessages(currentDialogueId));}function switchChat(_0x4061e9){const _0x15fe81=_0x236e86;if(currentDialogueId===_0x4061e9)return;currentDialogueId=_0x4061e9,saveState(),renderChatList(),renderMessages(currentDialogueId),sidebar[_0x15fe81(0x10c)][_0x15fe81(0x11c)](_0x15fe81(0x122)),overlay['classList'][_0x15fe81(0x11c)]('open');}function deleteChat(_0x2de9b3){const _0x318260=_0x236e86,_0x26737b=dialogues[_0x318260(0x9b)](_0x578c74=>_0x578c74['id']===_0x2de9b3);if(_0x26737b===-0x1)return;dialogues[_0x318260(0xd9)](_0x26737b,0x1);if(dialogues[_0x318260(0xe6)]===0x0)createNewChat(!![]);else currentDialogueId===_0x2de9b3?(currentDialogueId=dialogues[0x0]['id'],saveState(),renderChatList(),renderMessages(currentDialogueId)):(saveState(),renderChatList());}function clearAllChats(){const _0x5ed8f8=_0x236e86;confirm(_0x5ed8f8(0xad))&&(dialogues=[],createNewChat(!![]),updateCountersUI(),saveState());}async function sendMessage(){const _0x219656=_0x236e86,_0x1aa411=messageInput[_0x219656(0x125)][_0x219656(0x104)]();if(!_0x1aa411)return;const _0x32b24e=dialogues['find'](_0x1e5020=>_0x1e5020['id']===currentDialogueId);if(!_0x32b24e){addMessageToChat('Ошибка:\x20Текущий\x20диалог\x20не\x20найден.','ai'),saveState();return;}addMessageToChat(_0x1aa411,_0x219656(0xe2)),_0x32b24e[_0x219656(0x123)][_0x219656(0x82)]({'text':_0x1aa411,'sender':_0x219656(0xe2)}),messageInput[_0x219656(0x125)]='',messageInput[_0x219656(0xb5)]=!![],sendButton['disabled']=!![];const _0x2467d4=addMessageToChat(_0x219656(0xcc),'ai',!![]);try{const _0x32db25=MODELS[_0x219656(0xd3)](_0x5f1704=>_0x5f1704['id']===currentModelId);if(!_0x32db25)throw new Error(_0x219656(0x126));const _0x4ceca6=ROLES['find'](_0x426944=>_0x426944['id']===currentRoleId),_0x250603=_0x4ceca6?_0x4ceca6[_0x219656(0x90)]:'',_0x292cbb=_0x32db25[_0x219656(0xfd)](_0x32b24e['messages'],_0x250603),_0x2a5b92={'Content-Type':_0x219656(0xe1)};if(_0x32db25[_0x219656(0x70)]){if(_0x32db25[_0x219656(0x11f)]===_0x219656(0xab)){}else _0x32db25[_0x219656(0x11f)]===_0x219656(0xd6)&&(_0x2a5b92[_0x219656(0x7b)]='Bearer\x20'+_0x32db25[_0x219656(0x70)]);}const _0x26d21b=await fetch(_0x32db25[_0x219656(0xcd)],{'method':_0x219656(0xbb),'headers':_0x2a5b92,'body':JSON[_0x219656(0x7a)](_0x292cbb)});if(!_0x26d21b['ok']){removeMessageFromChatElement(_0x2467d4);const _0x5ea02c=await _0x26d21b[_0x219656(0x6c)]();console[_0x219656(0xbd)]('API\x20HTTP\x20Ошибка:',_0x26d21b[_0x219656(0x75)],_0x26d21b[_0x219656(0xcb)],_0x5ea02c);let _0x50249c=_0x219656(0x100)+_0x26d21b[_0x219656(0x75)]+'\x20'+_0x26d21b[_0x219656(0xcb)]+'.';if(_0x5ea02c&&_0x5ea02c[_0x219656(0xbd)]&&_0x5ea02c[_0x219656(0xbd)][_0x219656(0xf9)])_0x50249c+=_0x219656(0x116)+_0x5ea02c[_0x219656(0xbd)][_0x219656(0xf9)];else _0x5ea02c&&_0x5ea02c[_0x219656(0xf9)]&&(_0x50249c+='\x20Детали:\x20'+_0x5ea02c['message']);addMessageToChat(_0x50249c,'ai');}else{if(_0x32db25[_0x219656(0x11a)]&&_0x26d21b[_0x219656(0xa2)]){let _0x5d6b85='';const _0x423083=_0x26d21b[_0x219656(0xa2)][_0x219656(0xf2)](),_0x3d4c73=new TextDecoder('utf-8');while(!![]){const {done:_0x433122,value:_0x2083fb}=await _0x423083[_0x219656(0xa5)]();if(_0x433122)break;const _0x23860d=_0x3d4c73['decode'](_0x2083fb,{'stream':!![]}),_0x50e59d=_0x23860d[_0x219656(0x84)]('\x0a')[_0x219656(0x130)](_0x3e6da4=>_0x3e6da4[_0x219656(0x104)]()!=='');for(const _0x3dc4b6 of _0x50e59d){if(_0x3dc4b6[_0x219656(0xfa)](_0x219656(0x89))){const _0x53a776=_0x3dc4b6[_0x219656(0x12d)](0x6);if(_0x53a776===_0x219656(0x117))break;try{const _0xa6bfb5=JSON[_0x219656(0x71)](_0x53a776);if(_0xa6bfb5[_0x219656(0x96)]&&_0xa6bfb5[_0x219656(0x96)][_0x219656(0xe6)]>0x0){const _0x5e6a73=_0xa6bfb5[_0x219656(0x96)][0x0][_0x219656(0xb0)]['content']||'';_0x5e6a73&&(_0x5d6b85+=_0x5e6a73,updateMessageInChatElement(_0x2467d4,_0x5d6b85));}}catch(_0x4c7831){console[_0x219656(0xbd)](_0x219656(0xed),_0x4c7831,_0x53a776);}}}}removeMessageFromChatElement(_0x2467d4),addMessageToChat(_0x5d6b85,'ai'),_0x32b24e[_0x219656(0x123)][_0x219656(0x82)]({'text':_0x5d6b85,'sender':'ai'});}else{const _0x56c7b3=await _0x26d21b['json']();removeMessageFromChatElement(_0x2467d4),console['log'](_0x219656(0xdf),_0x56c7b3);let _0x4476c0='Не\x20удалось\x20получить\x20ответ\x20от\x20AI.';if(_0x32db25[_0x219656(0x11f)]===_0x219656(0xab)){if(_0x56c7b3[_0x219656(0xb6)]&&_0x56c7b3[_0x219656(0xb6)][_0x219656(0xe6)]>0x0&&_0x56c7b3[_0x219656(0xb6)][0x0][_0x219656(0xc0)]&&_0x56c7b3[_0x219656(0xb6)][0x0][_0x219656(0xc0)][_0x219656(0x12a)]&&_0x56c7b3[_0x219656(0xb6)][0x0][_0x219656(0xc0)]['parts']['length']>0x0&&_0x56c7b3[_0x219656(0xb6)][0x0][_0x219656(0xc0)]['parts'][0x0][_0x219656(0x68)])_0x4476c0=_0x56c7b3[_0x219656(0xb6)][0x0][_0x219656(0xc0)][_0x219656(0x12a)][0x0][_0x219656(0x68)],addMessageToChat(_0x4476c0,'ai'),_0x32b24e[_0x219656(0x123)][_0x219656(0x82)]({'text':_0x4476c0,'sender':'ai'});else{if(_0x56c7b3[_0x219656(0x9a)]&&_0x56c7b3[_0x219656(0x9a)][_0x219656(0x110)]){let _0x5eb13a=_0x56c7b3[_0x219656(0x9a)][_0x219656(0x110)],_0x89c88=_0x56c7b3[_0x219656(0x9a)][_0x219656(0x83)],_0x1b4215=_0x219656(0xef)+_0x5eb13a+'.';_0x89c88&&_0x89c88[_0x219656(0xe6)]>0x0&&(_0x1b4215+=_0x219656(0xec)+_0x89c88[_0x219656(0xae)](_0x2be923=>_0x2be923[_0x219656(0x91)]+'\x20('+_0x2be923[_0x219656(0xee)]+')')[_0x219656(0xd5)](',\x20')),addMessageToChat(_0x1b4215,'ai');}else console[_0x219656(0xbd)](_0x219656(0x9c),_0x56c7b3),addMessageToChat(_0x219656(0xdb),'ai');}}else _0x32db25[_0x219656(0x11f)]===_0x219656(0xd6)?_0x56c7b3[_0x219656(0x96)]&&_0x56c7b3['choices'][_0x219656(0xe6)]>0x0&&_0x56c7b3['choices'][0x0][_0x219656(0xf9)]&&_0x56c7b3[_0x219656(0x96)][0x0][_0x219656(0xf9)][_0x219656(0xc0)]?(_0x4476c0=_0x56c7b3[_0x219656(0x96)][0x0][_0x219656(0xf9)][_0x219656(0xc0)],addMessageToChat(_0x4476c0,'ai'),_0x32b24e[_0x219656(0x123)]['push']({'text':_0x4476c0,'sender':'ai'})):(console[_0x219656(0xbd)](_0x219656(0xd1),_0x56c7b3),addMessageToChat(_0x219656(0xf7),'ai')):(console[_0x219656(0xbd)](_0x219656(0x97),_0x32db25[_0x219656(0x11f)]),addMessageToChat(_0x219656(0x94),'ai'));}!_0x32b24e[_0x219656(0x93)]&&_0x32b24e[_0x219656(0x123)][_0x219656(0xe6)]>0x0&&_0x32b24e[_0x219656(0x123)][0x0][_0x219656(0x7d)]===_0x219656(0xe2)&&(_0x32b24e[_0x219656(0x93)]=_0x32b24e[_0x219656(0x123)][0x0][_0x219656(0x68)][_0x219656(0x12d)](0x0,0x1e)+(_0x32b24e[_0x219656(0x123)][0x0][_0x219656(0x68)][_0x219656(0xe6)]>0x1e?_0x219656(0x67):''),renderChatList());totalRequests++;const _0x118576=new Date()[_0x219656(0x114)]()[_0x219656(0x84)]('T')[0x0];lastRequestDate!==_0x118576?(todayRequests=0x1,lastRequestDate=_0x118576):todayRequests++,updateCountersUI();}saveState();}catch(_0x4bd91a){console['error'](_0x219656(0x7e),_0x4bd91a),removeMessageFromChatElement(_0x2467d4);const _0x1e64c3='Произошла\x20ошибка:\x20'+(_0x4bd91a['message']||_0x219656(0x80))+_0x219656(0x8a);addMessageToChat(_0x1e64c3,'ai'),saveState();}finally{messageInput[_0x219656(0xb5)]=![],sendButton[_0x219656(0xb5)]=![],messageInput['focus'](),renderChatList();}}sendButton[_0x236e86(0x111)](_0x236e86(0xe8),sendMessage),messageInput[_0x236e86(0x111)](_0x236e86(0xb1),function(_0x1b930e){const _0x3ec007=_0x236e86;_0x1b930e[_0x3ec007(0xfe)]==='Enter'&&!_0x1b930e['shiftKey']&&(_0x1b930e[_0x3ec007(0x7c)](),sendMessage());}),newChatButton[_0x236e86(0x111)](_0x236e86(0xe8),()=>{const _0x234377=_0x236e86;createNewChat(!![]),sidebar['classList']['remove'](_0x234377(0x122)),overlay[_0x234377(0x10c)]['remove'](_0x234377(0x122));}),clearChatsButton[_0x236e86(0x111)](_0x236e86(0xe8),()=>{const _0x2b506b=_0x236e86;clearAllChats(),sidebar[_0x2b506b(0x10c)][_0x2b506b(0x11c)]('open'),overlay[_0x2b506b(0x10c)][_0x2b506b(0x11c)]('open');}),chatList[_0x236e86(0x111)](_0x236e86(0xe8),_0x4fc090=>{const _0x2f6b46=_0x236e86,_0x3ab415=_0x4fc090[_0x2f6b46(0x6a)][_0x2f6b46(0x9f)](_0x2f6b46(0x9d));if(!_0x3ab415||!_0x3ab415[_0x2f6b46(0xeb)][_0x2f6b46(0xea)])return;const _0x4b130b=_0x3ab415[_0x2f6b46(0xeb)]['dialogueId'],_0x3e25f2=_0x4fc090[_0x2f6b46(0x6a)];_0x3e25f2[_0x2f6b46(0x10c)][_0x2f6b46(0x6d)](_0x2f6b46(0x12f))?confirm('Вы\x20действительно\x20хотите\x20удалить\x20этот\x20диалог?')&&deleteChat(_0x4b130b):switchChat(_0x4b130b);}),roleSelect[_0x236e86(0x111)](_0x236e86(0xe8),_0x44b8c0=>{const _0x3afd5b=_0x236e86;_0x44b8c0[_0x3afd5b(0xa9)](),roleSelectDropdown[_0x3afd5b(0xca)][_0x3afd5b(0xf6)]=roleSelectDropdown[_0x3afd5b(0xca)]['display']===_0x3afd5b(0x133)?_0x3afd5b(0xf8):_0x3afd5b(0x133),modelSelectDropdown['style'][_0x3afd5b(0xf6)]=_0x3afd5b(0xf8);}),roleSelectDropdown[_0x236e86(0x111)](_0x236e86(0xe8),_0x281b37=>{const _0x328645=_0x236e86,_0x3703e3=_0x281b37['target'][_0x328645(0x9f)](_0x328645(0x103));_0x3703e3&&_0x3703e3[_0x328645(0xeb)][_0x328645(0x112)]&&(switchRole(_0x3703e3[_0x328645(0xeb)][_0x328645(0x112)]),roleSelectDropdown[_0x328645(0xca)][_0x328645(0xf6)]=_0x328645(0xf8));}),modelSelect[_0x236e86(0x111)](_0x236e86(0xe8),_0x352d7e=>{const _0x26ddf6=_0x236e86;_0x352d7e[_0x26ddf6(0xa9)](),modelSelectDropdown[_0x26ddf6(0xca)]['display']=modelSelectDropdown['style'][_0x26ddf6(0xf6)]===_0x26ddf6(0x133)?_0x26ddf6(0xf8):_0x26ddf6(0x133),roleSelectDropdown['style'][_0x26ddf6(0xf6)]=_0x26ddf6(0xf8);}),modelSelectDropdown[_0x236e86(0x111)](_0x236e86(0xe8),_0x22283f=>{const _0x3d4554=_0x236e86,_0x3b7b75=_0x22283f[_0x3d4554(0x6a)]['closest']('.dropdown-item');_0x3b7b75&&_0x3b7b75[_0x3d4554(0xeb)][_0x3d4554(0x88)]&&(switchModel(_0x3b7b75[_0x3d4554(0xeb)][_0x3d4554(0x88)]),modelSelectDropdown[_0x3d4554(0xca)]['display']=_0x3d4554(0xf8));}),document[_0x236e86(0x111)](_0x236e86(0xe8),_0x5aca15=>{const _0x51d4c5=_0x236e86;!roleSelect[_0x51d4c5(0x6d)](_0x5aca15[_0x51d4c5(0x6a)])&&(roleSelectDropdown[_0x51d4c5(0xca)]['display']=_0x51d4c5(0xf8)),!modelSelect['contains'](_0x5aca15['target'])&&(modelSelectDropdown['style']['display']=_0x51d4c5(0xf8));}),chatMessagesContainer[_0x236e86(0x111)](_0x236e86(0xe8),_0x306fb8=>{const _0x5f1b53=_0x236e86;if(_0x306fb8[_0x5f1b53(0x6a)][_0x5f1b53(0x10c)]['contains'](_0x5f1b53(0xff))||_0x306fb8[_0x5f1b53(0x6a)][_0x5f1b53(0x9f)](_0x5f1b53(0xbf))){const _0x567706=_0x306fb8[_0x5f1b53(0x6a)][_0x5f1b53(0x9f)](_0x5f1b53(0xbf)),_0x2d7706=_0x567706[_0x5f1b53(0x9f)](_0x5f1b53(0x73));if(_0x2d7706){const _0xae1167=_0x2d7706['querySelector'](_0x5f1b53(0xc4));_0xae1167&&navigator[_0x5f1b53(0x11e)][_0x5f1b53(0xa3)](_0xae1167[_0x5f1b53(0xb3)])['then'](()=>{const _0x567c28=_0x5f1b53,_0x10cd96=_0x567706[_0x567c28(0x120)];_0x567706[_0x567c28(0x120)]=_0x567c28(0xa8),_0x567706[_0x567c28(0x10c)][_0x567c28(0xa0)](_0x567c28(0xb8)),setTimeout(()=>{const _0x10929f=_0x567c28;_0x567706['innerHTML']=_0x10cd96,_0x567706['classList'][_0x10929f(0x11c)](_0x10929f(0xb8));},0x7d0);})['catch'](_0x19bc9d=>{const _0x4b80f3=_0x5f1b53;console[_0x4b80f3(0xbd)](_0x4b80f3(0xde),_0x19bc9d);});}}}),document['addEventListener'](_0x236e86(0xfb),()=>{const _0x23198d=_0x236e86;loadState(),renderChatList(),currentDialogueId?renderMessages(currentDialogueId):dialogues['length']>0x0?switchChat(dialogues[0x0]['id']):createNewChat(!![]),renderRolesDropdown(),renderModelsDropdown(),updateCountersUI(),burgerButton[_0x23198d(0x111)](_0x23198d(0xe8),()=>{const _0x40dcee=_0x23198d;sidebar['classList'][_0x40dcee(0x79)](_0x40dcee(0x122)),overlay[_0x40dcee(0x10c)][_0x40dcee(0x79)](_0x40dcee(0x122));}),mobileBurgerButton[_0x23198d(0x111)](_0x23198d(0xe8),()=>{const _0x29d804=_0x23198d;sidebar['classList'][_0x29d804(0x79)](_0x29d804(0x122)),overlay[_0x29d804(0x10c)][_0x29d804(0x79)](_0x29d804(0x122));}),overlay[_0x23198d(0x111)](_0x23198d(0xe8),()=>{const _0x2ab220=_0x23198d;sidebar[_0x2ab220(0x10c)]['remove']('open'),overlay[_0x2ab220(0x10c)]['remove'](_0x2ab220(0x122));});});function _0x5cf1(){const _0x401ced=['getElementById','apiKey','parse','active','.code-block','1624orszrZ','status','119235oUKjZU','message-input','2wjPBKA','toggle','stringify','Authorization','preventDefault','sender','Произошла\x20ошибка:','scrollHeight','Неизвестная\x20ошибка','fas','push','safetyRatings','split','model-select','Неизвестная\x20роль','unshift','modelId','data:\x20','.\x20Проверьте\x20консоль\x20браузера\x20(F12).','https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=','send-button','scrollTop','forEach','totalRequests','prompt','category','selected-model-name','title','Неизвестный\x20тип\x20API\x20модели.','AIzaSyDhMSW32l2RocTIuWh6bO4vecvufYVMYTU','choices','Неизвестный\x20тип\x20API:','Новый\x20диалог','&lt;','promptFeedback','findIndex','Неожиданная\x20структура\x20ответа\x20Google\x20API:','.chat-item','name','closest','add','mobile-burger-button','body','writeText','role-select-dropdown','read','div','parentNode','<i\x20class=\x22fas\x20fa-check\x22></i>','stopPropagation','action','google','<span\x20class=\x22bold-text\x22>$1</span>','Вы\x20действительно\x20хотите\x20очистить\x20ВСЕ\x20диалоги?\x20Это\x20действие\x20нельзя\x20отменить.','map','Ошибка:\x20Диалог\x20не\x20найден.','delta','keypress','systemInstruction','textContent','dropdown-item','disabled','candidates','chat-item','copied','xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx','2534715uRNGdM','POST','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22copy-button\x22\x20title=\x22Скопировать\x20код\x22><i\x20class=\x22fas\x20fa-copy\x22></i></button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<pre><code>','error','ai-message','.copy-button','content','chat-list','912560UFrjYw','&#039;','code','17484YtaGlq','422517zNvHGT','dialogues','role-select','deepseek\x20Безлимит','style','statusText','<i\x20class=\x22fas\x20fa-spinner\x20fa-spin\x22></i>\x20Печатает...','endpoint','writer','Ты\x20-\x20опытный\x20программист,\x20эксперт\x20в\x20различных\x20языках\x20и\x20технологиях.\x20Твоя\x20задача\x20-\x20предоставлять\x20подробные\x20и\x20точные\x20ответы\x20на\x20вопросы,\x20связанные\x20с\x20кодом,\x20алгоритмами\x20и\x20архитектурой.\x20Все\x20примеры\x20кода\x20должны\x20быть\x20представлены\x20в\x20форматированных\x20блоках,\x20снабженных\x20комментариями\x20для\x20облегчения\x20понимания.\x20Тщательно\x20объясняй\x20сложные\x20концепции\x20программирования,\x20используя\x20аналогии\x20и\x20примеры\x20из\x20реального\x20мира.\x20ПИШИ\x20ВСЕГДА\x20ПО\x20РУССКИ','Писатель','Неожиданная\x20структура\x20ответа\x20OpenRouter\x20API\x20(не-стрим):','&gt;','find','todayRequests','join','openrouter','menapiState','span','splice','random','Получен\x20неожиданный\x20ответ\x20от\x20AI\x20(Google).\x20Проверьте\x20консоль\x20браузера.','Программист','chat-messages','Ошибка\x20при\x20копировании\x20текста:','API\x20Response\x20data:','querySelector','application/json','user','Переводчик','currentModelId','3123YzWcan','length','message-avatar','click','330eyYEPB','dialogueId','dataset','\x20Причины:\x20','Ошибка\x20парсинга\x20JSON\x20чанка:','probability','Ваш\x20запрос\x20был\x20заблокирован\x20из-за:\x20','https://openrouter.ai/api/v1/chat/completions','getItem','getReader','chat-title','toString','setItem','display','Получен\x20неожиданный\x20ответ\x20от\x20AI\x20(OpenRouter,\x20не-стрим).\x20Проверьте\x20консоль\x20браузера.','none','message','startsWith','DOMContentLoaded','burger-button','requestFormatter','key','copy-button','HTTP\x20Ошибка\x20API:\x20','assistant','message-content','.dropdown-item','trim','Ты\x20-\x20талантливый\x20писатель\x20с\x20богатым\x20воображением\x20и\x20отточенным\x20стилем.\x20Твоя\x20задача\x20-\x20помогать\x20пользователю\x20с\x20созданием\x20захватывающих\x20текстов,\x20разработкой\x20оригинальных\x20сюжетов,\x20написанием\x20трогательных\x20стихов\x20и\x20запоминающихся\x20песен.\x20Используй\x20яркий\x20и\x20выразительный\x20язык,\x20умело\x20играй\x20со\x20словами\x20и\x20создавай\x20неповторимую\x20атмосферу.\x20Предлагай\x20несколько\x20вариантов,\x20раскрывающих\x20разные\x20грани\x20темы.\x20ПИШИ\x20ВСЕГДА\x20ПО\x20РУССКИ','62359tIvvHI','empty','gemini\x20(работает\x20с\x20впн)','gemini-flash','Удалить\x20диалог','user-message','classList','Задавай\x20свои\x20вопросы\x20а\x20я\x20помогу\x20вам\x20на\x20них\x20ответить.','appendChild','standard','blockReason','addEventListener','roleId','Нет\x20диалогов','toISOString','deepseek-r1','\x20Детали:\x20','[DONE]','Стандарт','currentRoleId','supportsStreaming','overlay','remove','&quot;','clipboard','apiType','innerHTML','lastRequestDate','open','messages','&amp;','value','Выбранная\x20модель\x20не\x20найдена.','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22code-block\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22code-block-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22code-language\x22>','currentDialogueId','replace','parts','.sidebar','system','substring','createElement','fa-trash-alt','filter','Неизвестная\x20модель','coder','block','chat-item-actions','...','text','1113bHTjPP','target','thinking','json','contains','<br>'];_0x5cf1=function(){return _0x401ced;};return _0x5cf1();}
+const messageInput = document.getElementById('message-input');
+const sendButton = document.getElementById('send-button');
+const chatMessagesContainer = document.getElementById('chat-messages');
+const newChatButton = document.getElementById('new-chat-button');
+const chatList = document.getElementById('chat-list');
+const clearChatsButton = document.getElementById('clear-chats-button');
+const totalRequestsSpan = document.getElementById('total-requests');
+const todayRequestsSpan = document.getElementById('today-requests');
+const roleSelect = document.getElementById('role-select');
+const roleSelectDropdown = document.getElementById('role-select-dropdown');
+const selectedRoleNameSpan = document.getElementById('selected-role-name');
+const burgerButton = document.getElementById('burger-button');
+const mobileBurgerButton = document.getElementById('mobile-burger-button');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.createElement('div');
+overlay.classList.add('overlay');
+document.body.appendChild(overlay);
+
+const modelSelect = document.getElementById('model-select');
+const modelSelectDropdown = document.getElementById('model-select-dropdown');
+const selectedModelNameSpan = document.getElementById('selected-model-name');
+
+const GOOGLE_API_KEY = 'AIzaSyDhMSW32l2RocTIuWh6bO4vecvufYVMYTU';
+const OPENROUTER_API_KEY = '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';
+
+const MODELS = [
+    {
+        id: 'gemini-flash',
+        name: 'gemini (работает с впн)',
+        apiKey: GOOGLE_API_KEY,
+        apiType: 'google',
+        supportsStreaming: false,
+        endpoint: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GOOGLE_API_KEY}`,
+        requestFormatter: (messages, systemInstruction) => {
+             const contents = messages.map(msg => ({
+                 role: msg.sender === 'user' ? 'user' : 'model',
+                 parts: [{ text: msg.text }]
+             }));
+             const body = { contents: contents };
+             if (systemInstruction) {
+                 body.systemInstruction = { parts: [{ text: systemInstruction }] };
+             }
+             return body;
+         }
+    },
+    {
+        id: 'deepseek-r1',
+        name: 'deepseek Безлимит',
+        apiKey: OPENROUTER_API_KEY,
+        apiType: 'openrouter',
+        supportsStreaming: true,
+        endpoint: 'https://openrouter.ai/api/v1/chat/completions',
+        requestFormatter: (messages, systemInstruction) => {
+             const openrouterMessages = [];
+             if (systemInstruction) {
+                 openrouterMessages.push({ role: 'system', content: systemInstruction });
+             }
+             messages.forEach(msg => {
+                 openrouterMessages.push({
+                     role: msg.sender === 'user' ? 'user' : 'assistant',
+                     content: msg.text
+                 });
+             });
+             return {
+                 model: 'microsoft/mai-ds-r1:free',
+                 messages: openrouterMessages,
+                 stream: true
+             };
+        }
+    }
+];
+
+const ROLES = [
+    { id: 'standard', name: 'Стандарт', prompt: '' },
+    { id: 'coder', name: 'Программист', prompt: 'Ты - опытный программист, эксперт в различных языках и технологиях. Твоя задача - предоставлять подробные и точные ответы на вопросы, связанные с кодом, алгоритмами и архитектурой. Все примеры кода должны быть представлены в форматированных блоках, снабженных комментариями для облегчения понимания. Тщательно объясняй сложные концепции программирования, используя аналогии и примеры из реального мира. ПИШИ ВСЕГДА ПО РУССКИ' },
+    { id: 'writer', name: 'Писатель', prompt: 'Ты - талантливый писатель с богатым воображением и отточенным стилем. Твоя задача - помогать пользователю с созданием захватывающих текстов, разработкой оригинальных сюжетов, написанием трогательных стихов и запоминающихся песен. Используй яркий и выразительный язык, умело играй со словами и создавай неповторимую атмосферу. Предлагай несколько вариантов, раскрывающих разные грани темы. ПИШИ ВСЕГДА ПО РУССКИ' },
+    { id: 'translator', name: 'Переводчик', prompt: 'Ты - профессиональный переводчик, владеющий множеством языков и обладающий глубоким пониманием культурных нюансов. Твоя задача - обеспечивать точный и стилистически грамотный перевод предоставленного текста с одного языка на другой. Учитывай контекст и целевую аудиторию, чтобы сохранить смысл и эмоциональную окраску оригинала. При необходимости предлагай несколько вариантов перевода. ПИШИ ВСЕГДА ПО РУССКИ' },
+];
+
+
+let dialogues = [];
+let currentDialogueId = null;
+let totalRequests = 0;
+let todayRequests = 0;
+let lastRequestDate = null;
+let currentRoleId = ROLES[0].id;
+let currentModelId = MODELS[0].id;
+
+function generateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0,
+            v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
+function saveState() {
+    localStorage.setItem('menapiState', JSON.stringify({
+        dialogues: dialogues,
+        currentDialogueId: currentDialogueId,
+        totalRequests: totalRequests,
+        todayRequests: todayRequests,
+        lastRequestDate: lastRequestDate,
+        currentRoleId: currentRoleId,
+        currentModelId: currentModelId
+    }));
+}
+
+function loadState() {
+    const savedState = localStorage.getItem('menapiState');
+    if (savedState) {
+        const state = JSON.parse(savedState);
+        dialogues = state.dialogues || [];
+        totalRequests = state.totalRequests || 0;
+        todayRequests = state.todayRequests || 0;
+        lastRequestDate = state.lastRequestDate || null;
+        currentRoleId = state.currentRoleId || ROLES[0].id;
+        const loadedModelId = state.currentModelId;
+        const foundModel = MODELS.find(m => m.id === loadedModelId);
+        currentModelId = foundModel ? foundModel.id : MODELS[0].id;
+
+        const today = new Date().toISOString().split('T')[0];
+        if (lastRequestDate !== today) {
+            todayRequests = 0;
+            lastRequestDate = today;
+        }
+
+        const foundDialogue = dialogues.find(d => d.id === state.currentDialogueId);
+        if (dialogues.length === 0 || !foundDialogue) {
+             createNewChat(true);
+        } else {
+            currentDialogueId = state.currentDialogueId;
+        }
+    } else {
+        createNewChat(true);
+    }
+    if (!currentDialogueId || !dialogues.find(d => d.id === currentDialogueId)) {
+         if (dialogues.length > 0) {
+             currentDialogueId = dialogues[0].id;
+         } else {
+             createNewChat(true);
+             return;
+         }
+     }
+    saveState();
+}
+
+function escapeHTML(str) {
+    return str.replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+function formatMessageContent(text) {
+    const codeBlockRegex = /```(\w*)\n([\s\S]*?)```/g;
+    const boldRegex = /\*\*(.*?)\*\*/g;
+    let html = '';
+    let lastIndex = 0;
+    text.replace(codeBlockRegex, (match, lang, code, offset) => {
+        let nonCodePart = text.substring(lastIndex, offset);
+        nonCodePart = escapeHTML(nonCodePart);
+        nonCodePart = nonCodePart.replace(boldRegex, '<span class="bold-text">$1</span>');
+        nonCodePart = nonCodePart.replace(/\n/g, '<br>');
+        html += nonCodePart;
+        const language = lang || 'code';
+        const codeContent = code.trim();
+        html += `
+            <div class="code-block">
+                 <div class="code-block-header">
+                    <span class="code-language">${escapeHTML(language)}</span>
+                    <button class="copy-button" title="Скопировать код"><i class="fas fa-copy"></i></button>
+                </div>
+                <pre><code>${escapeHTML(codeContent)}</code></pre>
+            </div>
+        `;
+        lastIndex = offset + match.length;
+        return match;
+    });
+    let remainingPart = text.substring(lastIndex);
+    remainingPart = escapeHTML(remainingPart);
+    remainingPart = remainingPart.replace(boldRegex, '<span class="bold-text">$1</span>');
+    remainingPart = remainingPart.replace(/\n/g, '<br>');
+    html += remainingPart;
+    return html;
+}
+
+function addMessageToChat(text, sender, isThinking = false) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    messageElement.classList.add(sender === 'user' ? 'user-message' : 'ai-message');
+    if (isThinking) {
+        messageElement.classList.add('thinking');
+    }
+    const avatarElement = document.createElement('div');
+    avatarElement.classList.add('message-avatar');
+    avatarElement.textContent = sender === 'user' ? 'Вы' : 'AI';
+    const contentElement = document.createElement('div');
+    contentElement.classList.add('message-content');
+    if (isThinking) {
+        contentElement.innerHTML = text;
+    } else {
+        if (sender === 'ai') {
+            contentElement.innerHTML = formatMessageContent(text);
+        } else {
+            contentElement.textContent = text;
+            contentElement.innerHTML = contentElement.innerHTML.replace(/\n/g, '<br>');
+        }
+    }
+    messageElement.appendChild(avatarElement);
+    messageElement.appendChild(contentElement);
+    chatMessagesContainer.appendChild(messageElement);
+    chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+    if (isThinking) {
+        return messageElement;
+    }
+}
+
+function updateMessageInChatElement(messageElement, newText) {
+     if (messageElement && messageElement.classList.contains('thinking')) {
+         messageElement.classList.remove('thinking');
+         const contentElement = messageElement.querySelector('.message-content');
+         if (contentElement) {
+             contentElement.innerHTML = formatMessageContent(newText);
+         }
+         chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+     }
+}
+
+function removeMessageFromChatElement(messageElement) {
+    if (messageElement && messageElement.parentNode) {
+        messageElement.parentNode.removeChild(messageElement);
+    }
+}
+
+function renderMessages(dialogueId) {
+    chatMessagesContainer.innerHTML = '';
+    const dialogue = dialogues.find(d => d.id === dialogueId);
+    if (!dialogue) {
+        addMessageToChat('Ошибка: Диалог не найден.', 'ai');
+        return;
+    }
+    if (dialogue.messages.length === 0) {
+        addMessageToChat('Задавай свои вопросы а я помогу вам на них ответить.', 'ai');
+    } else {
+        dialogue.messages.forEach(msg => {
+            addMessageToChat(msg.text, msg.sender);
+        });
+    }
+}
+
+function renderChatList() {
+    chatList.innerHTML = '';
+    if (dialogues.length === 0) {
+        const emptyItem = document.createElement('li');
+        emptyItem.classList.add('chat-item', 'empty');
+        emptyItem.textContent = 'Нет диалогов';
+        chatList.appendChild(emptyItem);
+        return;
+    }
+    dialogues.forEach(dialogue => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('chat-item');
+        if (dialogue.id === currentDialogueId) {
+            listItem.classList.add('active');
+        }
+        listItem.dataset.dialogueId = dialogue.id;
+        const titleSpan = document.createElement('span');
+        titleSpan.classList.add('chat-title');
+        const firstUserMessage = dialogue.messages.find(msg => msg.sender === 'user');
+        titleSpan.textContent = dialogue.title || (firstUserMessage ? firstUserMessage.text.substring(0, 30) + (firstUserMessage.text.length > 30 ? '...' : '') : 'Новый диалог');
+        const actionsDiv = document.createElement('div');
+        actionsDiv.classList.add('chat-item-actions');
+        const deleteIcon = document.createElement('i');
+        deleteIcon.classList.add('fas', 'fa-trash-alt');
+        deleteIcon.title = 'Удалить диалог';
+        deleteIcon.dataset.action = 'delete';
+        actionsDiv.appendChild(deleteIcon);
+        listItem.appendChild(titleSpan);
+        listItem.appendChild(actionsDiv);
+        chatList.appendChild(listItem);
+    });
+}
+
+function renderRolesDropdown() {
+    roleSelectDropdown.innerHTML = '';
+    ROLES.forEach(role => {
+        const roleItem = document.createElement('div');
+        roleItem.classList.add('dropdown-item');
+        if (role.id === currentRoleId) {
+            roleItem.classList.add('active');
+        }
+        roleItem.dataset.roleId = role.id;
+        roleItem.textContent = role.name;
+        roleSelectDropdown.appendChild(roleItem);
+    });
+    updateSelectedRoleName();
+}
+
+function updateSelectedRoleName() {
+    const selectedRole = ROLES.find(role => role.id === currentRoleId);
+    selectedRoleNameSpan.textContent = selectedRole ? selectedRole.name : 'Неизвестная роль';
+}
+
+function switchRole(roleId) {
+    if (currentRoleId === roleId) {
+        return;
+    }
+    currentRoleId = roleId;
+    saveState();
+    renderRolesDropdown();
+}
+
+function renderModelsDropdown() {
+    modelSelectDropdown.innerHTML = '';
+    MODELS.forEach(model => {
+        const modelItem = document.createElement('div');
+        modelItem.classList.add('dropdown-item');
+        if (model.id === currentModelId) {
+            modelItem.classList.add('active');
+        }
+        modelItem.dataset.modelId = model.id;
+        modelItem.textContent = model.name;
+        modelSelectDropdown.appendChild(modelItem);
+    });
+    updateSelectedModelName();
+}
+
+function updateSelectedModelName() {
+    const selectedModel = MODELS.find(model => model.id === currentModelId);
+    selectedModelNameSpan.textContent = selectedModel ? selectedModel.name : 'Неизвестная модель';
+}
+
+function switchModel(modelId) {
+    if (currentModelId === modelId) {
+        return;
+    }
+    currentModelId = modelId;
+    saveState();
+    renderModelsDropdown();
+}
+
+
+function updateCountersUI() {
+    totalRequestsSpan.textContent = totalRequests;
+    todayRequestsSpan.textContent = todayRequests;
+}
+
+function createNewChat(activateAndSave = true) {
+    const newId = generateUUID();
+    const newDialogue = {
+        id: newId,
+        title: '',
+        messages: []
+    };
+    dialogues.unshift(newDialogue);
+    if (activateAndSave) {
+        currentDialogueId = newId;
+        saveState();
+        renderChatList();
+        renderMessages(currentDialogueId);
+    }
+}
+
+function switchChat(dialogueId) {
+    if (currentDialogueId === dialogueId) {
+        return;
+    }
+    currentDialogueId = dialogueId;
+    saveState();
+    renderChatList();
+    renderMessages(currentDialogueId);
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+}
+
+function deleteChat(dialogueId) {
+    const index = dialogues.findIndex(d => d.id === dialogueId);
+    if (index === -1) return;
+    dialogues.splice(index, 1);
+    if (dialogues.length === 0) {
+        createNewChat(true);
+    } else if (currentDialogueId === dialogueId) {
+        currentDialogueId = dialogues[0].id;
+        saveState();
+        renderChatList();
+        renderMessages(currentDialogueId);
+    } else {
+        saveState();
+        renderChatList();
+    }
+}
+
+function clearAllChats() {
+    if (confirm('Вы действительно хотите очистить ВСЕ диалоги? Это действие нельзя отменить.')) {
+        dialogues = [];
+        createNewChat(true);
+        updateCountersUI();
+        saveState();
+    }
+}
+
+async function sendMessage() {
+    const userMessageText = messageInput.value.trim();
+    if (!userMessageText) {
+        return;
+    }
+
+    const currentDialogue = dialogues.find(d => d.id === currentDialogueId);
+    if (!currentDialogue) {
+        addMessageToChat('Ошибка: Текущий диалог не найден.', 'ai');
+        saveState();
+        return;
+    }
+
+    addMessageToChat(userMessageText, 'user');
+    currentDialogue.messages.push({ text: userMessageText, sender: 'user' });
+    messageInput.value = '';
+    messageInput.disabled = true;
+    sendButton.disabled = true;
+
+    const thinkingMessageElement = addMessageToChat('<i class="fas fa-spinner fa-spin"></i> Печатает...', 'ai', true);
+
+    try {
+        const selectedModel = MODELS.find(model => model.id === currentModelId);
+        if (!selectedModel) {
+             throw new Error('Выбранная модель не найдена.');
+        }
+
+        const selectedRole = ROLES.find(role => role.id === currentRoleId);
+        const systemInstruction = selectedRole ? selectedRole.prompt : '';
+
+        const requestBody = selectedModel.requestFormatter(currentDialogue.messages, systemInstruction);
+
+        const headers = {
+            'Content-Type': 'application/json',
+        };
+        if (selectedModel.apiKey) {
+             if (selectedModel.apiType === 'google') {
+                // API Key is already in the endpoint for Google
+             } else if (selectedModel.apiType === 'openrouter') {
+                 headers['Authorization'] = `Bearer ${selectedModel.apiKey}`;
+             }
+        }
+
+
+        const response = await fetch(selectedModel.endpoint, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(requestBody),
+        });
+
+        if (!response.ok) {
+            removeMessageFromChatElement(thinkingMessageElement);
+            const errorData = await response.json();
+            console.error('API HTTP Ошибка:', response.status, response.statusText, errorData);
+            let errorMsg = `HTTP Ошибка API: ${response.status} ${response.statusText}.`;
+            if (errorData && errorData.error && errorData.error.message) {
+                errorMsg += ` Детали: ${errorData.error.message}`;
+            } else if (errorData && errorData.message) {
+                 errorMsg += ` Детали: ${errorData.message}`;
+            }
+            addMessageToChat(errorMsg, 'ai');
+        } else {
+             if (selectedModel.supportsStreaming && response.body) {
+                 let aiResponseText = '';
+                 const reader = response.body.getReader();
+                 const decoder = new TextDecoder('utf-8');
+
+                 while (true) {
+                     const { done, value } = await reader.read();
+                     if (done) {
+                         break;
+                     }
+                     const chunk = decoder.decode(value, { stream: true });
+                     const lines = chunk.split('\n').filter(line => line.trim() !== '');
+
+                     for (const line of lines) {
+                        if (line.startsWith('data: ')) {
+                           const data = line.substring(6);
+                           if (data === '[DONE]') {
+                              break;
+                           }
+                           try {
+                               const json = JSON.parse(data);
+                               if (json.choices && json.choices.length > 0) {
+                                   const content = json.choices[0].delta.content || '';
+                                   if (content) {
+                                       aiResponseText += content;
+                                       updateMessageInChatElement(thinkingMessageElement, aiResponseText);
+                                   }
+                               }
+                           } catch (e) {
+                               console.error('Ошибка парсинга JSON чанка:', e, data);
+                           }
+                        }
+                     }
+                 }
+                removeMessageFromChatElement(thinkingMessageElement);
+                addMessageToChat(aiResponseText, 'ai'); // Add final message after streaming
+                currentDialogue.messages.push({ text: aiResponseText, sender: 'ai' });
+
+             } else {
+                 const data = await response.json();
+                 removeMessageFromChatElement(thinkingMessageElement);
+                 console.log('API Response data:', data);
+                 let aiResponseText = 'Не удалось получить ответ от AI.';
+
+                 if (selectedModel.apiType === 'google') {
+                     if (data.candidates && data.candidates.length > 0 &&
+                         data.candidates[0].content && data.candidates[0].content.parts &&
+                         data.candidates[0].content.parts.length > 0 && data.candidates[0].content.parts[0].text) {
+                         aiResponseText = data.candidates[0].content.parts[0].text;
+                         addMessageToChat(aiResponseText, 'ai');
+                         currentDialogue.messages.push({ text: aiResponseText, sender: 'ai' });
+                     } else if (data.promptFeedback && data.promptFeedback.blockReason) {
+                         let blockReason = data.promptFeedback.blockReason;
+                         let safetyRatings = data.promptFeedback.safetyRatings;
+                         let blockMsg = `Ваш запрос был заблокирован из-за: ${blockReason}.`;
+                         if (safetyRatings && safetyRatings.length > 0) {
+                             blockMsg += ' Причины: ' + safetyRatings.map(r => `${r.category} (${r.probability})`).join(', ');
+                         }
+                         addMessageToChat(blockMsg, 'ai');
+                     } else {
+                         console.error('Неожиданная структура ответа Google API:', data);
+                         addMessageToChat('Получен неожиданный ответ от AI (Google). Проверьте консоль браузера.', 'ai');
+                     }
+                 } else if (selectedModel.apiType === 'openrouter') {
+                      // If not streaming, handle non-streaming response structure
+                      if (data.choices && data.choices.length > 0 && data.choices[0].message && data.choices[0].message.content) {
+                         aiResponseText = data.choices[0].message.content;
+                         addMessageToChat(aiResponseText, 'ai');
+                         currentDialogue.messages.push({ text: aiResponseText, sender: 'ai' });
+                      } else {
+                         console.error('Неожиданная структура ответа OpenRouter API (не-стрим):', data);
+                         addMessageToChat('Получен неожиданный ответ от AI (OpenRouter, не-стрим). Проверьте консоль браузера.', 'ai');
+                      }
+                 } else {
+                      console.error('Неизвестный тип API:', selectedModel.apiType);
+                      addMessageToChat('Неизвестный тип API модели.', 'ai');
+                 }
+             }
+
+            if (!currentDialogue.title && currentDialogue.messages.length > 0 && currentDialogue.messages[0].sender === 'user') {
+                currentDialogue.title = currentDialogue.messages[0].text.substring(0, 30) + (currentDialogue.messages[0].text.length > 30 ? '...' : '');
+                renderChatList();
+            }
+
+            totalRequests++;
+            const today = new Date().toISOString().split('T')[0];
+            if (lastRequestDate !== today) {
+                todayRequests = 1;
+                lastRequestDate = today;
+            } else {
+                todayRequests++;
+            }
+            updateCountersUI();
+        }
+
+        saveState();
+
+    } catch (error) {
+        console.error('Произошла ошибка:', error);
+        removeMessageFromChatElement(thinkingMessageElement);
+        const errorMsg = `Произошла ошибка: ${error.message || 'Неизвестная ошибка'}. Проверьте консоль браузера (F12).`;
+        addMessageToChat(errorMsg, 'ai');
+        saveState();
+    } finally {
+        messageInput.disabled = false;
+        sendButton.disabled = false;
+        messageInput.focus();
+        renderChatList();
+    }
+}
+
+
+sendButton.addEventListener('click', sendMessage);
+messageInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+    }
+});
+
+newChatButton.addEventListener('click', () => {
+    createNewChat(true);
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+});
+
+clearChatsButton.addEventListener('click', () => {
+    clearAllChats();
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+});
+
+chatList.addEventListener('click', (event) => {
+    const listItem = event.target.closest('.chat-item');
+    if (!listItem || !listItem.dataset.dialogueId) return;
+    const dialogueId = listItem.dataset.dialogueId;
+    const target = event.target;
+    if (target.classList.contains('fa-trash-alt')) {
+        if (confirm('Вы действительно хотите удалить этот диалог?')) {
+            deleteChat(dialogueId);
+        }
+    } else {
+        switchChat(dialogueId);
+    }
+});
+
+roleSelect.addEventListener('click', (event) => {
+    event.stopPropagation();
+    roleSelectDropdown.style.display = roleSelectDropdown.style.display === 'block' ? 'none' : 'block';
+    modelSelectDropdown.style.display = 'none';
+});
+
+roleSelectDropdown.addEventListener('click', (event) => {
+    const item = event.target.closest('.dropdown-item');
+    if (item && item.dataset.roleId) {
+        switchRole(item.dataset.roleId);
+        roleSelectDropdown.style.display = 'none';
+    }
+});
+
+modelSelect.addEventListener('click', (event) => {
+    event.stopPropagation();
+    modelSelectDropdown.style.display = modelSelectDropdown.style.display === 'block' ? 'none' : 'block';
+    roleSelectDropdown.style.display = 'none';
+});
+
+modelSelectDropdown.addEventListener('click', (event) => {
+    const item = event.target.closest('.dropdown-item');
+    if (item && item.dataset.modelId) {
+        switchModel(item.dataset.modelId);
+        modelSelectDropdown.style.display = 'none';
+    }
+});
+
+
+document.addEventListener('click', (event) => {
+    if (!roleSelect.contains(event.target)) {
+        roleSelectDropdown.style.display = 'none';
+    }
+    if (!modelSelect.contains(event.target)) {
+         modelSelectDropdown.style.display = 'none';
+    }
+});
+
+chatMessagesContainer.addEventListener('click', (event) => {
+    if (event.target.classList.contains('copy-button') || event.target.closest('.copy-button')) {
+        const button = event.target.closest('.copy-button');
+        const codeBlock = button.closest('.code-block');
+        if (codeBlock) {
+            const codeElement = codeBlock.querySelector('code');
+            if (codeElement) {
+                navigator.clipboard.writeText(codeElement.textContent).then(() => {
+                    const originalIcon = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-check"></i>';
+                    button.classList.add('copied');
+                    setTimeout(() => {
+                        button.innerHTML = originalIcon;
+                        button.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Ошибка при копировании текста:', err);
+                });
+            }
+        }
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadState();
+    renderChatList();
+    if (currentDialogueId) {
+        renderMessages(currentDialogueId);
+    } else {
+        if (dialogues.length > 0) {
+            switchChat(dialogues[0].id);
+        } else {
+            createNewChat(true);
+        }
+    }
+    renderRolesDropdown();
+    renderModelsDropdown();
+    updateCountersUI();
+
+    burgerButton.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('open');
+    });
+    mobileBurgerButton.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('open');
+    });
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('open');
+    });
+});
+
