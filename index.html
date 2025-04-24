@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
-
     <div class="chat-layout">
         <aside class="sidebar">
             <div class="sidebar-header">
@@ -27,54 +24,49 @@
             <button class="clear-chats-button" id="clear-chats-button">
                 <i class="fas fa-trash-alt"></i> Очистить диалоги
             </button>
-
             <div class="sidebar-footer">
                 <div class="sidebar-links">
                 </div>
-                <p>Привет! Я могу ответить на твои вопросы и помочь с различными задачами. Чтобы узнать подробнее, подпишись на <a href="https://t.me/GEPETEBOTIK" target="_blank">Telegram канал</a> и <a href="https://t.me/MenapiCHat" target="_blank">чат</a></p>
+                <p>Привет! Я могу ответить на твои вопросы и помочь с различными задачами. Чтобы узнать подробнее, подпишись на <a href="https://t.me/GEPETEBOTIK" target="_blank">Telegram канал</a></p>
                 <div class="sidebar-stats">
                     <p>Всего запросов: <span id="total-requests">0</span></p>
                     <p>За сегодня: <span id="today-requests">0</span></p>
                 </div>
                 <div class="sidebar-version">
-                    MENAPI Beta&lt;0.1&gt;
+                    MENAPI Beta&lt;2.0&gt;
                 </div>
             </div>
         </aside>
-
         <main class="main-chat">
             <div class="chat-info-header">
                 <button class="mobile-burger-button" id="mobile-burger-button">
                     <i class="fas fa-bars"></i>
-                </button>               
+                </button>
             </div>
-
             <div class="chat-messages" id="chat-messages">
             </div>
-
             <div class="chat-input-area">
                 <div class="input-icons">
                 </div>
-                <textarea id="message-input" class="chat-input" placeholder="Задать вопрос..." autocomplete="off"></textarea>
+                <textarea id="message-input" class="chat-input" placeholder="Напишите ваш вопрос а я дам на него ответ" autocomplete="off"></textarea>
                 <button id="send-button" class="send-button">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
-
             <div class="chat-bottom-panel">
-                <div class="model-select">
-                    Модель: <span class="selected-option">gemini-2.0-flash</span> <i class="fas fa-chevron-down"></i>
+                <div class="model-select" id="model-select">
+                    Модель: <span class="selected-option" id="selected-model-name"></span> <i class="fas fa-chevron-down"></i>
+                    <div class="model-select-dropdown" id="model-select-dropdown">
+                    </div>
                 </div>
                 <div class="role-select" id="role-select">
-                    Роль: <span class="selected-option" id="selected-role-name">Стандарт</span> <i class="fas fa-chevron-down"></i>
+                    Роль: <span class="selected-option" id="selected-role-name"></span> <i class="fas fa-chevron-down"></i>
                     <div class="role-select-dropdown" id="role-select-dropdown">
                     </div>
                 </div>
             </div>
         </main>
     </div>
-
     <script src="script.js"></script>
 </body>
-
 </html>
